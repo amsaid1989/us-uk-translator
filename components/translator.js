@@ -39,6 +39,15 @@ const britishToAmericanTitles = Object.entries(americanToBritishTitles).reduce(
     {}
 );
 
+function TranslationData(translation) {
+    this.matches = [];
+    this.originalIndices = [];
+    this.originalLengths = [];
+    this.indices = [];
+    this.lengths = [];
+    this.translation = translation;
+}
+
 // HELPER FUNCTIONS
 function splitString(str, length) {
     /*
@@ -136,12 +145,7 @@ function translateNonTitles(phrase, dict) {
 }
 
 function translateTime(sentence, locale) {
-    let output = {
-        matches: [],
-        indices: [],
-        lengths: [],
-        translation: sentence,
-    };
+    let output = new TranslationData(sentence);
 
     if (locale === "american-to-british") {
         const regex = /(\d{1,2}):(\d{1,2})/g;
@@ -149,7 +153,9 @@ function translateTime(sentence, locale) {
             regex,
             (match, p1, p2, offset) => {
                 output.matches.push(match);
+                output.originalIndices.push(offset);
                 output.indices.push(offset);
+                output.originalLengths.push(match.length);
                 output.lengths.push(match.length);
                 return `${p1}.${p2}`;
             }
@@ -160,7 +166,9 @@ function translateTime(sentence, locale) {
             regex,
             (match, p1, p2, offset) => {
                 output.matches.push(match);
+                output.originalIndices.push(offset);
                 output.indices.push(offset);
+                output.originalLengths.push(match.length);
                 output.lengths.push(match.length);
                 return `${p1}:${p2}`;
             }
@@ -170,7 +178,56 @@ function translateTime(sentence, locale) {
     return output;
 }
 
-function matchCase(translationObj) {}
+function checkAndUpdateCase(translation, match) {
+    let output = translation;
+    let loopLength;
+
+    if (
+        translation.length === match.length ||
+        translation.length < match.length
+    ) {
+        loopLength = translation.length;
+    } else {
+        loopLength = match.length;
+    }
+
+    for (let i = 0; i < loopLength; i++) {
+        const matchFirstChar = match[i][0];
+        const translationFirstChar = output[i][0];
+
+        if (matchFirstChar.toUpperCase() === matchFirstChar) {
+            output[i] = translationFirstChar.toUpperCase() + output[i].slice(1);
+        }
+    }
+
+    return output;
+}
+
+function matchCase(originalSentence, translationData) {
+    let output = translationData;
+
+    for (let i = 0; i < output.indices.length; i++) {
+        const index = output.indices[i];
+        const originalIndex = output.originalIndices[i];
+        const length = output.lengths[i];
+        const originalLength = output.originalLengths[i];
+        let translation = output.translation
+            .slice(index, index + length)
+            .split(" ");
+        const match = originalSentence
+            .slice(originalIndex, originalIndex + originalLength)
+            .split(" ");
+
+        translation = checkAndUpdateCase(translation, match);
+
+        output.translation =
+            originalSentence.slice(0, originalIndex) +
+            translation.join(" ") +
+            originalSentence.slice(originalIndex + originalLength);
+    }
+
+    return output;
+}
 
 class Translator {
     translate(string, locale) {
@@ -213,6 +270,8 @@ class Translator {
                         )
                     );
 
+                    output.originalIndices.push(match.index);
+                    output.originalLengths.push(phrase.length);
                     output.lengths.push(replacement.length);
 
                     output.translation = output.translation.replace(
@@ -227,10 +286,13 @@ class Translator {
             }
         }
 
-        // TODO: figure out the matchCase function and try to improve the translation function
-        return output;
+        output.originalIndices = Array.from(new Set(output.originalIndices));
+        output.originalLengths = Array.from(new Set(output.originalLengths));
+        output.indices = Array.from(new Set(output.indices));
+        output.lengths = Array.from(new Set(output.lengths));
+
+        return matchCase(originalSentence, output);
     }
 }
 
 module.exports = Translator;
-
