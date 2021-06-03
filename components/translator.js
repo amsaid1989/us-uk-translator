@@ -29,6 +29,20 @@ class Translator {
 
         return output;
     }
+
+    highlightTranslation(translationData) {
+        let output;
+
+        for (const replacement of translationData.replacements) {
+            const regex = new RegExp(replacement, "g");
+
+            output = translationData.translation.replace(regex, (match) => {
+                return `<span class="highlight">${match}</span>`;
+            });
+        }
+
+        return output;
+    }
 }
 
 module.exports = Translator;

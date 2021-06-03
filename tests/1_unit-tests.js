@@ -368,5 +368,67 @@ suite("Unit Tests", function () {
                 });
             });
         });
+
+        suite("highlightTranslation", function () {
+            test("Highlight translation in Mangoes are my favorite fruit.", function () {
+                const translation = translator.translate(
+                    "Mangoes are my favorite fruit.",
+                    "american-to-british"
+                );
+
+                const highlight = translator.highlightTranslation(translation);
+
+                assert.isString(highlight);
+                assert.equal(
+                    highlight,
+                    'Mangoes are my <span class="highlight">favourite</span> fruit.'
+                );
+            });
+
+            test("Highlight translation in I ate yogurt for breakfast.", function () {
+                const translation = translator.translate(
+                    "I ate yogurt for breakfast.",
+                    "american-to-british"
+                );
+
+                const highlight = translator.highlightTranslation(translation);
+
+                assert.isString(highlight);
+                assert.equal(
+                    highlight,
+                    'I ate <span class="highlight">yoghurt</span> for breakfast.'
+                );
+            });
+
+            test("Highlight translation in We watched the footie match for a while.", function () {
+                const translation = translator.translate(
+                    "We watched the footie match for a while.",
+                    "british-to-american"
+                );
+
+                const highlight = translator.highlightTranslation(translation);
+
+                assert.isString(highlight);
+                assert.equal(
+                    highlight,
+                    'We watched the <span class="highlight">soccer</span> match for a while.'
+                );
+            });
+
+            test("Highlight translation in Paracetamol takes up to an hour to work.", function () {
+                const translation = translator.translate(
+                    "Paracetamol takes up to an hour to work.",
+                    "british-to-american"
+                );
+
+                const highlight = translator.highlightTranslation(translation);
+
+                assert.isString(highlight);
+                assert.equal(
+                    highlight,
+                    '<span class="highlight">Tylenol</span> takes up to an hour to work.'
+                );
+            });
+        });
     });
 });
