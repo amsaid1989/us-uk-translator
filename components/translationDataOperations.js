@@ -15,6 +15,9 @@ function swapMatches(translationData, matchesArray, locale) {
             const regex = new RegExp(match, "g");
 
             if (dict[match]) {
+                if (!output.translated) {
+                    output.translated = true;
+                }
                 output.replacements.push(dict[match]);
                 output.translation = output.translation.replace(
                     regex,

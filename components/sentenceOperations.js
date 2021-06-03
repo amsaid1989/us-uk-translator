@@ -99,6 +99,7 @@ function formatTime(sentence, locale) {
             (match, p1, p2) => {
                 const replacement = `${p1}.${p2}`;
 
+                output.translated = true;
                 output.replacements.push(replacement);
 
                 return replacement;
@@ -111,6 +112,7 @@ function formatTime(sentence, locale) {
             (match, p1, p2, offset) => {
                 const replacement = `${p1}:${p2}`;
 
+                output.translated = true;
                 output.replacements.push(replacement);
 
                 return replacement;

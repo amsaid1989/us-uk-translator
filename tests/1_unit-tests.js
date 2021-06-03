@@ -17,9 +17,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "Mangoes are my favourite fruit."
@@ -35,9 +37,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "I ate yoghurt for breakfast."
@@ -53,9 +57,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "We had a party at my friend's flat."
@@ -71,9 +77,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "Can you toss this in the bin for me?"
@@ -89,9 +97,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(output.translation, "The car park was full.");
                 });
 
@@ -104,9 +114,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "Like a high tech Heath Robinson device."
@@ -122,9 +134,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "To bunk off means to skip class or work."
@@ -140,9 +154,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "No Mr Bond, I expect you to die."
@@ -158,9 +174,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "Dr Grosh will see you now."
@@ -176,9 +194,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "Lunch is at 12.15 today."
@@ -196,9 +216,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "We watched the soccer match for a while."
@@ -214,9 +236,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "Tylenol takes up to an hour to work."
@@ -232,9 +256,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "First, caramelize the onions."
@@ -250,9 +276,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "I spent the public holiday at the carnival."
@@ -268,9 +296,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "I had a cookie then went to the fish-and-chip shop."
@@ -286,9 +316,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "I've just got odds and ends in my fanny pack."
@@ -304,9 +336,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "The swap meet at Boxted Airfield was called off."
@@ -322,9 +356,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "Have you met Mrs. Kalyani?"
@@ -340,9 +376,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "Prof. Joyner of King's College, London."
@@ -358,9 +396,11 @@ suite("Unit Tests", function () {
                     assert.isObject(output);
                     assert.isNotEmpty(output);
                     assert.containsAllKeys(output, [
+                        "translated",
                         "replacements",
                         "translation",
                     ]);
+                    assert.isTrue(output.translated);
                     assert.equal(
                         output.translation,
                         "Tea time is usually around 4 or 4:30."
