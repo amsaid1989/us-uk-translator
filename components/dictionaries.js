@@ -41,6 +41,10 @@ const britishToAmericanTitles = Object.entries(titles).reduce(
 );
 
 function getDictionary(locale) {
+    /*
+     * Returns an array with all the required dictionaries
+     * for the specified locale.
+     */
     if (locale === "american-to-british") {
         return [
             americanToBritishTitles,

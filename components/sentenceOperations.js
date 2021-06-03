@@ -50,6 +50,16 @@ function splitString(str, length) {
 }
 
 function getVaryingLengthPhrases(str) {
+    /*
+     * Takes a string and generates different phrases with varying
+     * lengths.
+     *
+     * Currently, it only generates phrases that are maximum 5-words-
+     * long. However, this could be made more dynamic, by giving the
+     * user a choice of the maximum length they require, or by
+     * checking it against the available dictionaries to determine
+     * what is the longest phrase stored.
+     */
     const oneWord = str.split(" ");
     const twoWord = splitString(str, 2);
     const threeWord = splitString(str, 3);
@@ -60,6 +70,21 @@ function getVaryingLengthPhrases(str) {
 }
 
 function restoreCase(sentence, originalSentence, indicesArray) {
+    /*
+     * Because the Tanslator object converts the sentence to lowercase
+     * to check it against the dictionaries, this function restores
+     * the case for the words of the sentence that weren't translated.
+     *
+     * It does that by using the indicesArray which includes the Index
+     * objects of all the phrases that will be translated. It uses these
+     * indices to swap them into the original sentence.
+     *
+     * The sentence argument contains the lowercase version of the original
+     * sentence. Up to this point, the sentence hasn't been translated
+     * yet.
+     */
+
+    // If nothing was translated, then just return the original sentence
     if (indicesArray.length === 0) {
         return originalSentence;
     }
@@ -67,20 +92,32 @@ function restoreCase(sentence, originalSentence, indicesArray) {
     let output = [];
 
     for (let i = 0; i < indicesArray.length; i++) {
+        // Get the current Index object from the indices array as well
+        // as the next Index object, if we are not at the last Index
         const curIndex = indicesArray[i];
         const nextIndex =
             i < indicesArray.length - 1 ? indicesArray[i + 1] : null;
 
+        // If the current Index is the first in the array, then get
+        // all words that come before from the start of the original
+        // sentence, up to the start value of the current Index
         if (i === 0) {
             output.push(originalSentence.slice(0, curIndex.start));
         }
 
         output.push(sentence.slice(curIndex.start, curIndex.end));
 
+        // If there is a next Index, and its start value is not the
+        // same as the start value of the current Index, then get
+        // all the words that come between the current Index and the
+        // next one.
         if (nextIndex && nextIndex.start !== curIndex.start) {
             output.push(originalSentence.slice(curIndex.end, nextIndex.start));
         }
 
+        // If current Index is the last in the array, then get all
+        // words after the end value of the current Index and up to
+        // the ending of the original sentence.
         if (i === indicesArray.length - 1) {
             output.push(originalSentence.slice(curIndex.end));
         }
@@ -90,6 +127,13 @@ function restoreCase(sentence, originalSentence, indicesArray) {
 }
 
 function formatTime(sentence, locale) {
+    /*
+     * Change the format of the any time string according to
+     * the provided locale.
+     */
+
+    // Create the TranslationData object that will be passed
+    // to the translate method and eventually returned from it.
     let output = new TranslationData(sentence);
 
     if (locale === "american-to-british") {
