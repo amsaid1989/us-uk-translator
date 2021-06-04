@@ -34,7 +34,7 @@ Aside from the modules that contain the dictionary objects and the `translator.j
 6) `TranslationData.js` This provides another simple object that will include some information about the translated text and that will be returned from the `translate` method to later be used by the `highlightTranslation` method of the `Translator` class.
 7) `translationDataOperations.js` This provides the `swapMatches` function which operates on a `TranslationData` object. This is the function that actually performs the translation.
 
-#### Generating phrases from a string of text
+### Generating phrases from a string of text
 
 The key part of my approach to this project is generating phrases from the provided text.
 
@@ -42,7 +42,7 @@ The way I achieve that is by going through the text, splitting it into single wo
 
 Finally, I return all of these phrases in an array.
 
-#### Matching the phrases against the dictionaries
+### Matching the phrases against the dictionaries
 
 Using this array of phrases, I start by sorting it in descending order based on the length of the phrase. This is to make sure that the translation process actually translates full phrases first before handling separate words. For instance, if we have a sentence that includes the British phrase ***car boot sale***. This full phrase in American translates to ***swap meet***. However, the phrase ***car boot*** on its own translates to ***trunk***. If the phrases were not sorted in descending order, then the phrase ***car boot*** might be translated first into ***trunk*** making the final translation ***trunk sale*** which is not the intended meaning.
 
@@ -50,7 +50,7 @@ Next, I loop through the array, comparing each phrase against the dictionaries t
 
 This all happens inside the `getMatches` function of the `phraseOperations.js` module.
 
-#### Locating the matched phrases in the text
+### Locating the matched phrases in the text
 
 The next piece of the puzzle is the `getMatchIndices` function from the `indexOperations.js` module.
 
