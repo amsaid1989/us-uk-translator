@@ -18,6 +18,8 @@ However, I tried to imagine a situation where these objects are much larger, wit
 
 Therefore, I wanted to go the other way around. Start from the text provided, break it down into phrases and then search for those specific phrases in the dictionaries.
 
+***NOTE:*** For a real-life project, my approach is probably over-engineered. However, since I am doing this for practicing, I wanted to see if I can find alternative solutions to the same problem.
+
 ## Breaking down my approach
 
 The logic is broken into several modules that all live under the `components` directory.
