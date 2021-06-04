@@ -24,7 +24,7 @@ The logic is broken into several modules that all live under the `components` di
 
 The main module is the `translator.js`, which declares a `Translator` class with a `translate` method. This method uses the other modules to produce the final translated text.
 
-Aside from the modules that contain the dictionary objects and the `translator.js` module itself, there are **7** modules in the `components` directory:
+Aside from the modules that contain the dictionary objects and the `translator.js` module itself, there are ***7*** modules in the `components` directory:
 
 1) `dictionaries.js` This organises the dictionary objects provided by freeCodeCamp and provides a `getDictionary` function that returns the necessary dictionaries to translate from one locale to the other.
 2) `sentenceOperations.js` This provides a group of functions that operate on a full string of text.
@@ -44,7 +44,7 @@ Finally, I return all of these phrases in an array.
 
 #### Matching the phrases against the dictionaries
 
-Using this array of phrases, I start by sorting it in descending order based on the length of the phrase. This is to make sure that the translation process actually translates full phrases first before handling separate words. For instance, if we have a sentence that includes the British phrase **car boot sale**. This full phrase in American translates to **swap meet**. However, the phrase **car boot** on its own translates to **trunk**. If the phrases were not sorted in descending order, then the phrase **car boot** might be translated first into **trunk** making the final translation **trunk sale** which is not the intended meaning.
+Using this array of phrases, I start by sorting it in descending order based on the length of the phrase. This is to make sure that the translation process actually translates full phrases first before handling separate words. For instance, if we have a sentence that includes the British phrase ***car boot sale***. This full phrase in American translates to ***swap meet***. However, the phrase ***car boot*** on its own translates to ***trunk***. If the phrases were not sorted in descending order, then the phrase ***car boot*** might be translated first into ***trunk*** making the final translation ***trunk sale*** which is not the intended meaning.
 
 Next, I loop through the array, comparing each phrase against the dictionaries to see if it exists in any of them. If it does, the phrase gets added to an array of unique matches.
 
